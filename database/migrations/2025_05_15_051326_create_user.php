@@ -13,8 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         User::create([
-            'name' => 'tian',
-            'email' => 'tian@gmail.com',
+            'name' => 'inggar',
+            'email' => 'inggar@gmail.com',
             'password' => bcrypt('12345678')
         ]); 
     }
