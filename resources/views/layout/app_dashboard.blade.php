@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from techzaa.in/larkon/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 May 2025 02:15:31 GMT -->
+
 <head>
      <!-- Title Meta -->
      <meta charset="utf-8" />
@@ -15,8 +16,11 @@
      <!-- App favicon -->
      <link rel="shortcut icon" href="assets/images/favicon.ico">
 
+     <!-- Di <head> -->
+     <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+     @include ('include.styledash')
 </head>
-@include ('include.styledash')
+
 <body>
 
      <!-- START Wrapper -->
@@ -190,9 +194,14 @@
 
                                         <div class="dropdown-divider my-1"></div>
 
-                                        <a class="dropdown-item text-danger" href="auth-signin.html">
-                                             <i class="bx bx-log-out fs-18 align-middle me-1"></i><span class="align-middle">Logout</span>
-                                        </a>
+                                        <!-- Logout Button -->
+                                        <form method="POST" action="{{ route('logout') }}">
+                                             @csrf
+                                             <button type="submit" class="dropdown-item text-danger">
+                                                  <i class="bx bx-log-out fs-18 align-middle me-1"></i>
+                                                  <span class="align-middle">Logout</span>
+                                             </button>
+                                        </form>
                                    </div>
                               </div>
 
@@ -443,17 +452,24 @@
                </div>
           </div>
           <!-- ========== Topbar End ========== -->
-           <!-- nav -->
-            @include('layout.assets.nav')
+          <!-- nav -->
+          @include('layout.assets.nav')
 
-<!-- content -->
-@yield('content')
+          <!-- content -->
+          @yield('content')
      </div>
      <!-- END Wrapper -->
-      @include('include.scriptdash')
+     @include('include.scriptdash')
+
+     <!-- Bootstrap Bundle with Popper (versi sesuai dengan yang Anda pakai) -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>>
+
+     <!-- Sebelum </body> -->
+     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
 
 </body>
 
 
 <!-- Mirrored from techzaa.in/larkon/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 May 2025 02:16:28 GMT -->
+
 </html>
