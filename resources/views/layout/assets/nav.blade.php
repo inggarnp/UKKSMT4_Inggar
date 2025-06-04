@@ -24,12 +24,21 @@ $isStudent = auth()->user()->userReference->reference_type === "App\\Models\\Stu
         </a>
     </div>
 
-    <!-- Saldo hanya untuk student -->
+    <!-- Informasi Nama dan Saldo -->
     @if($isStudent && $people)
         <div class="px-3 py-2 text-center border-bottom">
+            <div class="fw-semibold" style="font-size: 1rem;">
+                {{ $people->name ?? '-' }}
+            </div>
             <div class="text-muted" style="font-size: 0.9rem;">Saldo Anda</div>
             <div class="fw-bold" style="font-size: 1.2rem;">
-Rp {{ number_format (auth()->user()->userReference->reference->saldo->saldo ?? 0, 0, ',','.') }}
+                Rp {{ number_format(auth()->user()->userReference->reference->saldo->saldo ?? 0, 0, ',', '.') }}
+            </div>
+        </div>
+    @elseif(!$isStudent && $people)
+        <div class="px-3 py-2 text-center border-bottom">
+            <div class="fw-semibold" style="font-size: 1rem;">
+                {{ $people->name ?? '-' }}
             </div>
         </div>
     @endif
@@ -39,6 +48,7 @@ Rp {{ number_format (auth()->user()->userReference->reference->saldo->saldo ?? 0
         <iconify-icon icon="solar:double-alt-arrow-right-bold-duotone" class="button-sm-hover-icon"></iconify-icon>
     </button>
 
+    <!-- Sidebar Menu -->
     <div class="scrollbar" data-simplebar>
         <ul class="navbar-nav" id="navbar-nav">
 
@@ -123,6 +133,7 @@ Rp {{ number_format (auth()->user()->userReference->reference->saldo->saldo ?? 0
                     </a>
                 </li>
             @endif
+
         </ul>
     </div>
 </div>

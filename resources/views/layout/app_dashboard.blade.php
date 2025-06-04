@@ -165,6 +165,15 @@
                                    </button>
                               </div>
 
+                              @php
+                              $people = null;
+                              if (auth()->check() && auth()->user()->userReference && auth()->user()->userReference->reference) {
+                              $employee = auth()->user()->userReference->reference;
+                              $employee->load('people');
+                              $people = $employee->people;
+                              }
+                              @endphp
+
                               <!-- User -->
                               <div class="dropdown topbar-item">
                                    <a type="button" class="topbar-button" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -174,22 +183,28 @@
                                    </a>
                                    <div class="dropdown-menu dropdown-menu-end">
                                         <!-- item-->
-                                        <h6 class="dropdown-header">Welcome Gaston!</h6>
+                                        <h6 class="dropdown-header">
+                                             Welcome {{ $people->name ?? 'User' }}!
+                                        </h6>
                                         <a class="dropdown-item" href="pages-profile.html">
-                                             <i class="bx bx-user-circle text-muted fs-18 align-middle me-1"></i><span class="align-middle">Profile</span>
+                                             <i class="bx bx-user-circle text-muted fs-18 align-middle me-1"></i>
+                                             <span class="align-middle">Profile</span>
                                         </a>
                                         <a class="dropdown-item" href="apps-chat.html">
-                                             <i class="bx bx-message-dots text-muted fs-18 align-middle me-1"></i><span class="align-middle">Messages</span>
+                                             <i class="bx bx-message-dots text-muted fs-18 align-middle me-1"></i>
+                                             <span class="align-middle">Messages</span>
                                         </a>
-
                                         <a class="dropdown-item" href="pages-pricing.html">
-                                             <i class="bx bx-wallet text-muted fs-18 align-middle me-1"></i><span class="align-middle">Pricing</span>
+                                             <i class="bx bx-wallet text-muted fs-18 align-middle me-1"></i>
+                                             <span class="align-middle">Pricing</span>
                                         </a>
                                         <a class="dropdown-item" href="pages-faqs.html">
-                                             <i class="bx bx-help-circle text-muted fs-18 align-middle me-1"></i><span class="align-middle">Help</span>
+                                             <i class="bx bx-help-circle text-muted fs-18 align-middle me-1"></i>
+                                             <span class="align-middle">Help</span>
                                         </a>
                                         <a class="dropdown-item" href="auth-lock-screen.html">
-                                             <i class="bx bx-lock text-muted fs-18 align-middle me-1"></i><span class="align-middle">Lock screen</span>
+                                             <i class="bx bx-lock text-muted fs-18 align-middle me-1"></i>
+                                             <span class="align-middle">Lock screen</span>
                                         </a>
 
                                         <div class="dropdown-divider my-1"></div>
@@ -204,6 +219,7 @@
                                         </form>
                                    </div>
                               </div>
+
 
                               <!-- App Search-->
                               <form class="app-search d-none d-md-block ms-2">

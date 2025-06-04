@@ -33,6 +33,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
+                                    <th>Employee</th>
                                 </tr>
                             </thead>
                             <!-- end thead-->
@@ -41,7 +42,6 @@
                                 <tr>
                                     <td>{{$item->no}}</td>
                                     <td>{{$item->name}}</td>
-                                    <td>
                                     <div class="btn-group mb-2 ">
                                         @if(isset($item->employeeHasRoom))
                                         <td>{{$item->employeeHasRoom->employee->people->name}}</td>
@@ -52,7 +52,6 @@
                                                 ])}}" class="btn btn-success">Pilih Pegawai</a>
                                             @endif
                                         </div>
-                                    </td>
                                 </tr>
                     @empty
                     <tr>

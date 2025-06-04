@@ -41,16 +41,19 @@
                             <tbody>
                                 @forelse ($orders as $i => $item)
                                 <tr>
-                                    <td>{{$i +1}}</td>
-                                    <td>{{$item->product->name }}</td>
-                                    <td>Rp {{ number_format($item->product->price, 0, ',', '.' )}}</td>
+                                    <td>{{ $i + 1 }}</td>
+                                    <td>{{ $item->product->name }}</td>
+                                    <td>Rp {{ number_format($item->product->price, 0, ',', '.') }}</td>
                                     @php
                                     switch($item->status) {
                                     case 0 : $status = "PENDING";break;
                                     case 1 : $status = "PROGRES";break;
-                                    case 2 : $status = "SELESAI";break;
+                                    case 2 : $status = "DECLINE";break;
+                                    case 3 : $status = "SELESAI";break;
+                                    default: $status = "UNKNOWN";break;
                                     }
                                     @endphp
+                                    <td>{{ $status }}</td>
                                 </tr>
                                 @empty
                                 @endforelse

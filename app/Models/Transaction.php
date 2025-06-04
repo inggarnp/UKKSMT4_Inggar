@@ -10,7 +10,8 @@ class Transaction extends Model
     use HasFactory;
     const STATUS_PENDING = 0;
     const STATUS_PROGRES = 1;
-    const STATUS_DONE = 2;
+    const STATUS_DECLINE = 2;
+    const STATUS_DONE    = 3;
 
     protected $guarded = [];
 
@@ -22,9 +23,10 @@ class Transaction extends Model
         });
     }
 
-    //public function scopePending($query){return $query->where('status', self::STATUS_PENDING);}
-    //public function scopeProgres($query){return $query->where('status', self::STATUS_PROGRES);}
-    //public function scopeSelesai($query){return $query->where('status', self::STATUS_SELESAI);}
+    public function scopePending($query){return $query->where('status', self::STATUS_PENDING);}
+    public function scopeProgres($query){return $query->where('status', self::STATUS_PROGRES);}
+    public function scopeDecline($query){return $query->where('status', self::STATUS_DECLINE);}
+    public function scopeSelesai($query){return $query->where('status', self::STATUS_DONE);}
 
 
     public function product()
